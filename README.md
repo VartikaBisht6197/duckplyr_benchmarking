@@ -22,15 +22,15 @@ The following core data transformation operations are benchmarked:
 
 ## How it Works
 
-1.  **Package Loading**: `dplyr`, `microbenchmark`, and `ggplot2` are loaded. `duckplyr` is loaded after `dplyr` benchmarks to ensure `dplyr`'s native performance is captured before `duckplyr` overrides its methods.
+1. **Package Loading**: `dplyr`, `microbenchmark`, and `ggplot2` are loaded. `duckplyr` is loaded after `dplyr` benchmarks to ensure `dplyr`'s native performance is captured before `duckplyr` overrides its methods.
 
-2.  **Data Preparation**: The `mtcars` dataset is expanded to 100,000 rows for more meaningful performance comparisons.
+2. **Data Preparation**: The `mtcars` dataset is expanded to 100,000 rows for more meaningful performance comparisons.
 
-3.  **Benchmarking**: The `microbenchmark` package is used to run each operation multiple times and collect precise timing data for Base R, dplyr, and duckplyr.
+3. **Benchmarking**: The `microbenchmark` package is used to run each operation multiple times and collect precise timing data for Base R, dplyr, and duckplyr.
 
-4.  **Visualization**: The results are compiled into a single data frame, and a boxplot is generated using `ggplot2` to visually compare the performance across operations and methods.
+4. **Visualization**: The results are compiled into a single data frame, and a boxplot is generated using `ggplot2` to visually compare the performance across operations and methods.
 
-5.  **Output**: The generated plot is saved as a PDF file named `mtcars_benchmarking_plot.pdf`.
+5. **Output**: The generated plot is saved as a PDF file named `mtcars_benchmarking_plot.pdf`.
 
 ## Requirements
 
@@ -40,14 +40,31 @@ The following core data transformation operations are benchmarked:
 
 ## Usage
 
-1.  Save the R script (e.g., `benchmark_script.R`).
+To run this script, it's recommended to set up a Conda environment using the provided `duckplyr.yaml` file to ensure all necessary dependencies are met.
 
-2.  Open RStudio or your preferred R environment.
+1. **Create Conda Environment**:
+   If you have a `duckplyr.yaml` file, use it to create the environment:
+   ```
+   conda env create -f duckplyr.yaml
+   ```
+(If you don't have a `duckplyr.yaml` file, you would typically install R and the required packages manually: `conda install -c conda-forge r-base r-dplyr r-duckplyr r-microbenchmark r-ggplot2`)
 
-3.  Run the script:
+2. **Activate Conda Environment**:
 
-    ```
-    source("benchmark_script.R")
-    ```
+conda activate duckplyr_env_name # Replace 'duckplyr_env_name' with the actual name from your yaml file or the one you chose.
 
-4.  The benchmark results will be printed to the console, and a PDF plot will be saved in your working directory.
+
+3. **Save the R script**:
+Save the R script (e.g., `benchmarking.R`) in your desired directory.
+
+4. **Run the script**:
+Open RStudio or your preferred R environment *within the activated Conda environment*, or run directly from the terminal:
+
+```
+Rscript benchmarking.R
+```
+
+The benchmark results will be printed to the console.
+
+5. **View Output**:
+A PDF plot named `mtcars_benchmarking_plot.pdf` will be saved in the same directory where you ran the script.
